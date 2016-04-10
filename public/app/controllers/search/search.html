@@ -9,6 +9,19 @@
     
     <div class="results" ng-show="vm.searchResult">
         <h3>Search Results for {{vm.searchPhrase | capitalize }}</h3>
+        
+        <ul>
+            <li ng-repeat="gif in vm.searchResult.data">
+                <img src="{{gif.images.downsized}}" alt="{{gif.slug}}">
+                <p>show this one in modal</p>
+                <img src="{{gif.url}}" alt="{{gif.slug}}">
+            </li>
+        </ul>
+        
+        <div class="pagination">
+            <p>Pagination</p>
+            {{vm.searchResult.pagination}}
+        </div>
     </div>
     
 </section>

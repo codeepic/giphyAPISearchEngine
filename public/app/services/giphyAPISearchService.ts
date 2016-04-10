@@ -7,7 +7,8 @@ class GiphyAPISearchService {
     static $inject = ['$q', '$http'];
     
     private searchUrl: string = 'http://api.giphy.com/v1/gifs/search?q=';
-    private apiKey: string = 'dc6zaTOxFJmzC'; 
+    private apiKey: string = 'dc6zaTOxFJmzC';
+    private pageSize: number = 15;
     
     constructor(private $q: ng.IQService, private $http: ng.IHttpService){}
     
@@ -18,7 +19,7 @@ class GiphyAPISearchService {
         
         this.$http({
             method: 'GET',
-            url: this.searchUrl + phrase + '&api_key=' + this.apiKey
+            url: this.searchUrl + phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize
         }).success((result) =>{
             q.resolve(result);
         }).error((e) =>{

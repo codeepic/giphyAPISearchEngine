@@ -44,13 +44,14 @@ var GiphyAPISearchService = (function () {
         this.$http = $http;
         this.searchUrl = 'http://api.giphy.com/v1/gifs/search?q=';
         this.apiKey = 'dc6zaTOxFJmzC';
+        this.pageSize = 15;
     }
     //http://api.giphy.com/v1/gifs/search?q=puppies&api_key=dc6zaTOxFJmzC   
     GiphyAPISearchService.prototype.Search = function (phrase) {
         var q = this.$q.defer();
         this.$http({
             method: 'GET',
-            url: this.searchUrl + phrase + '&api_key=' + this.apiKey
+            url: this.searchUrl + phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize
         }).success(function (result) {
             q.resolve(result);
         }).error(function (e) {
