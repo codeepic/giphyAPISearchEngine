@@ -6,4 +6,9 @@
         <button ng-click="vm.searchFor('puppies')" class="green">Search for Puppies</button>
         <span class="clear"></span>
     </div>
+    
+    <div class="results" ng-show="vm.searchResult">
+        <h3>Search Results for {{vm.searchPhrase | capitalize }}</h3>
+    </div>
+    
 </section>

@@ -19,6 +19,25 @@
 })(angular);
 /// <reference path="../../typings/angularjs/angular.d.ts" />
 'use strict';
+var Capitalize = (function () {
+    function Capitalize() {
+    }
+    Capitalize.filter = function () {
+        return function (input) {
+            if (typeof input === 'string') {
+                return input.charAt(0).toUpperCase() + input.slice(1);
+            }
+            else {
+                return;
+            }
+        };
+    };
+    Capitalize.$inject = [];
+    return Capitalize;
+})();
+angular.module('gifSearchApp').filter('capitalize', Capitalize.filter);
+/// <reference path="../../typings/angularjs/angular.d.ts" />
+'use strict';
 var GiphyAPISearchService = (function () {
     function GiphyAPISearchService($q, $http) {
         this.$q = $q;
@@ -52,9 +71,12 @@ var SearchController = (function () {
         console.log('Search Controller init !!');
     }
     SearchController.prototype.searchFor = function (searchPhrase) {
+        var _this = this;
+        this.searchPhrase = searchPhrase;
         this.GiphyAPISearchService.Search(searchPhrase)
             .then(function (result) {
             console.log('success: ', result);
+            _this.searchResult = result;
         }, function (e) {
             console.log('error fetching ', searchPhrase); //todo: display message on screen 
         });
