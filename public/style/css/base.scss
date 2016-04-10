@@ -1,0 +1,78 @@
+@import 'mixins';
+
+body { background: $whiteSmoke; } //
+
+/******************************
+*  NORMALIZE
+*******************************/
+body, p, ul, ol, li, h1, h2, h3, h4, h5, h6, dl, dt, dd{
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li{ list-style-type: none; }
+dt, dd { display: inline-block; }
+em { font-weight: bold; font-style: normal; }
+img{ max-width: 100%; }
+
+*, *:before, *:after { 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.clearfix:after { clear: both; }
+
+/******************************
+*  BASIC STYLES
+*******************************/
+button, .btn, a, a:after, span { @include transition-mixin; }
+button, textarea, input, select, option { outline: none; }
+textarea, input, select { border: 1px solid $veryLightGrey; }
+input, textarea { padding: 6px 10px; background-color: #fff; }
+
+form {
+    .ng-invalid.ng-dirty,
+    .ng-invalid.ng-dirty:hover,
+    .ng-invalid.ng-dirty:focus {
+        border: 1px solid $freeSpeechRed;
+    }
+}
+
+textarea:hover, textarea:focus,
+input:hover, input:focus,
+select:hover, select:focus{
+    border: 1px solid $lightSkyBlue;
+}
+
+//disable label text selection
+label{ 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+//remove red outline in Firefox from input fields marked as required
+:invalid, :-moz-submit-invalid, :-moz-ui-invalid { box-shadow: none; }

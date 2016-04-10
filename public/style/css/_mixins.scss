@@ -1,0 +1,74 @@
+$pageWidth: 83em; // 1328/16px = 83em;
+
+$java: #207a9f;                     // only used as an active btn highlight in location editor
+$summerSky: #3cc6f4;                // mostly used for header background & blue btn & active el. arrow in Settings Mgmt & Content Center
+$lightSkyBlue: #88d9fa;             // mostly used for blue sub-headers & light-blue btn & toggle-header arrow
+$seagull: #75b3cd;                  // only used as a border for two main location editor buttons 
+$coral: #ff8748;                    // mostly used for .sub-toolbar-band, .bottom-orange-band & buttons
+$solitude: #e2e8ed;                 // mostly used for .toolbar-band & in location editor 
+$veryLightGrey: #ccc;               // often used for borders
+$athensGrey: #dedfe0;               // page border
+$stormGrey: #747a7f;                // wide usage, incl. grey btn & new side menu active el. in Settings Mgmt & Content Center
+$grey: #807e7e;                     // wide usage,
+$aluminium: #8d9297;                // new side menu in Settings Mgmt & Content Center
+$mischka: #abb0b6;                  // infrequent usage
+$whiteSmoke: #ededed;               // often used for backgrounds
+
+$freeSpeechRed: #d80000;
+$darkPastelGreen: #00ac24;
+
+//chart colours
+// $bahia: #86cc1c;
+// $flamingo: #e94d5b;        //red
+// $atlantis: #89c541;        //green
+// $sun: #f47a37;             //orange
+// $wildBlueYonder: #8089c2;  //purplish blue
+// $summerSky: #1db0e6;  
+////////////////////////////
+$flamingoCh:        #e64e5a;
+$summerSkyCh:       #1baee5;
+$mustardCh:         #ffe45f;
+$wildBlueYonderCh:  #8088c2;
+$atlantisCh:        #90d339;
+$crustaCh:          #f28149;
+$cornflowerBlueCh:  #5d85f4;
+$supernovaCh:       #fcbc2b;
+$heliotropeCh:      #d27afc;
+$gorseCh:           #eefe38;
+$neonPinkCh:        #f95fc5;
+$paleGreenCh:       #97f7b0;
+
+@mixin transition-mixin($t: 0.3s) {
+    -moz-transition: all $t ease;
+    -o-transition: all $t ease;
+    -webkit-transition: all $t ease;
+    transition: all $t ease;
+}
+
+
+@mixin clearfix-mixin{
+    &:after{ clear: both; }
+
+    &:before, &:after{
+        content: " ";
+        display: table;
+    }
+}
+
+@mixin calc-mixin($property, $value){
+    #{$property}: -webkit-calc(#{$value});
+    #{$property}: -moz-calc(#{$value});
+    #{$property}: calc(#{$value});
+}
+
+.right{ float: right; }
+.left{ float: left; }
+
+// to apply backgroud to the floated element that will be visible across the whole height of its parent,
+// first you need to prevent the parent from collapsing upon itself by applying overflow:hidden;
+.overflow-hidden { overflow: hidden; }
+// give the floated children element extra bottom margin & padding to show the background across the whole parent's height
+.full-parent-height-bg {
+    margin-bottom: -500em;
+    padding-bottom: 500em;
+}

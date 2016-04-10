@@ -1,0 +1,26 @@
+{
+  "name": "Forge-Analytics",
+  "version": "0.0.1",
+  "description": "Forge Analytics Dashboard built with D3 and Angular",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "d3",
+    "angular",
+    "javascript",
+    "analytics",
+    "svg"
+  ],
+  "author": "xavier glab",
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "latest",
+    "d3": "latest"
+  },
+  "devDependencies": {
+    "d3": "*",
+    "jquery": "^2.2.0"
+  }
+}

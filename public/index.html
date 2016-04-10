@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="dist/style.css">
+
+	<title>Analytics Dashboard</title>
+	<!-- <base href="/" /> -->
+	<base href="/index.html">
+</head>
+<body ng-app="analyticsApp">
+	<div class="wrapper">
+		
+		<div class="band header-band">
+			<div class="container">
+				<h1><a href="#">Analytics Dashboard</a></h1>			
+			</div>
+		</div>
+		
+		<div class="band toolbar-band">
+			<div class="container">
+				<p style="padding: 15px 0;">Select your project</p>
+			</div>
+		</div>
+		
+		<div class="band main-content-band">
+			<div class="container overflow-hidden">
+				
+				<nav class="main-nav full-parent-height-bg">
+				  <ul>
+				    <li>
+				      <h4>
+				      	<a ng-click="openAccordionSection(0)" ng-class="{active: selectedSection === 0}" class="screen-pen-icon-white parent" href="#">Overview</a>
+				      </h4>
+				    </li>
+				  </ul>
+				</nav>
+
+				<div class="template-container" ng-view></div>
+				
+				<span class="clear"></span>
+			</div>
+		</div>
+
+		<div class="band footer-band">
+			<div class="container">
+        <h4>
+          <a href="#">
+            Analytics Dashboard  
+          </a>
+        </h4>
+      </div>
+
+		</div>
+
+	</div><!-- wrapper ends -->
+
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	<script src="lib/d3/d3.min.js"></script>
+    <script src="lib/d3-tip/d3-tip.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-route/angular-route.min.js"></script>
+
+	<script src="dist/app.js"></script>
+</body>
+</html>
