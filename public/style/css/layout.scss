@@ -1,19 +1,8 @@
 @import 'mixins';
 
-.band{ width: 100%; }
-.header-band{ background: $summerSky; }
-.toolbar-band { background: $solitude; } // only used in geomanagement at the moment
-.main-content-band{ background:  url('/../style/img/dotted-bg.png') 0 0 repeat; }
-
-.footer-band { background: $stormGrey; }
-.footer-band .container h4 { padding: 18px 0 13px; }
+$pageWidth: 75em; // 1200/16px = 75em;
 
 .container {
     margin: 0 auto;
     max-width: $pageWidth;
-}
-
-.main-content-band > .container{
-    background: #fff;
-    border: 1px solid $athensGrey;
 }

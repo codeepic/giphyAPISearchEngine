@@ -1,7 +1,5 @@
 @import 'mixins';
 
-body { background: $whiteSmoke; } //
-
 /******************************
 *  NORMALIZE
 *******************************/
@@ -47,21 +45,13 @@ img{ max-width: 100%; }
 *******************************/
 button, .btn, a, a:after, span { @include transition-mixin; }
 button, textarea, input, select, option { outline: none; }
-textarea, input, select { border: 1px solid $veryLightGrey; }
+textarea, input, select { border: 1px solid red; }               //todo: change
 input, textarea { padding: 6px 10px; background-color: #fff; }
-
-form {
-    .ng-invalid.ng-dirty,
-    .ng-invalid.ng-dirty:hover,
-    .ng-invalid.ng-dirty:focus {
-        border: 1px solid $freeSpeechRed;
-    }
-}
 
 textarea:hover, textarea:focus,
 input:hover, input:focus,
 select:hover, select:focus{
-    border: 1px solid $lightSkyBlue;
+    border: 1px solid green;                                    //todo: change
 }
 
 //disable label text selection
