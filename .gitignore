@@ -1,4 +1,4 @@
-/lib
+/bower_components
 /node_modules
 /style/css/*.css
 /style/css/modules/*.css

@@ -1,0 +1,14 @@
+@import '../mixins';
+
+button{
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    padding: 7px 10px;
+    
+    &.green{
+        background-color: $meadow;
+        &:hover{ background-color: darken($meadow, 10%); }
+    }
+}

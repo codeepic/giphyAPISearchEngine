@@ -1,3 +1,10 @@
+$prussianBlue: #0b0016;
+$christalle: #551966;
+$marguerite: #6e55a8;
+$jordyBlue: #80b3dd;
+$lavender: #e5ecfc;
+$meadow: #17a880;
+
 @mixin transition-mixin($t: 0.3s) {
     -moz-transition: all $t ease;
     -o-transition: all $t ease;
