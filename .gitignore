@@ -1,0 +1,6 @@
+/lib
+/node_modules
+/style/css/*.css
+/style/css/modules/*.css
+/app/*.js
+/app/**/*.js
