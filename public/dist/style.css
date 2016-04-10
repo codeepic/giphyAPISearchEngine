@@ -2,4 +2,4 @@
 .right{float:right}.left{float:left}.container{margin:0 auto;max-width:75em}
 .right{float:right}.left{float:left}body,button,input,label,p,select,textarea{font-size:16px}h1,h2,h3,h4,h5,h6,input,label,li,p,select,span,td,textarea,th{color:#0b0016}a{text-decoration:none;color:#fff}a,body,button,h1,h2,h3,h4,h5,h6,input,li,p,select,textarea{font-family:Arial,sans-serif;font-weight:400}h1{font-size:2.125em}h2{font-size:1.75em}h3{font-size:1.375em}h4{font-size:1em}h5{font-size:.75em}h6{font-size:.625em}
 .right{float:right}.left{float:left}button{border:none;cursor:pointer;color:#fff;background-color:transparent;padding:7px 10px}button.green{background-color:#17a880}button.green:hover{background-color:#117b5e}
-.search-page .btns-container{margin:20px auto}
+.right{float:right}.left{float:left}.search-page .btns-container{margin:20px auto}.search-page .results li{background:#8aa9f1;padding:20px;margin:20px auto}

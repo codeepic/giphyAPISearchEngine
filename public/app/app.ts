@@ -4,7 +4,8 @@
 	'use strict';
 
 	angular.module('gifSearchApp', [
-        'ngRoute'
+        'ngRoute',
+        'ui.bootstrap'
         ]).config(config);
     
 	function config($routeProvider, $locationProvider) {
@@ -22,3 +23,4 @@
 	}
     
 })(angular);
+//

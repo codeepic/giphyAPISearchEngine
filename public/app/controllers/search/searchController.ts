@@ -1,15 +1,20 @@
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 ///<reference path="../../services/giphyAPISearchService.ts" />
 
 'use strict';
 
 class SearchController {
-    static $inject = ['GiphyAPISearchService'];
+    static $inject = ['GiphyAPISearchService', '$uibModal'];
+    //static $inject = ['GiphyAPISearchService'];
     
     private searchPhrase: string;
     private searchResult: any;
     
-    constructor(private GiphyAPISearchService: GiphyAPISearchService){
+    constructor(
+        private GiphyAPISearchService: GiphyAPISearchService,
+        private $uibModal: ng.ui.bootstrap.IModalService
+        ){
         console.log('Search Controller init !!');
     }
 
@@ -22,6 +27,18 @@ class SearchController {
                 this.searchResult = result;
             }, (e) => {
                console.log('error fetching ' , searchPhrase); //todo: display message on screen 
+            });
+    }
+    
+    private openModal(gif: any): void{
+        
+        let modalInstance = this.$uibModal.open({
+                templateUrl: '/app/controllers/gifModal/gifModal.html',
+                controller: 'GifModalController',
+                controllerAs: 'vm',
+                resolve: {
+                    passedGifData: gif
+                }
             });
     }
     

@@ -2,7 +2,8 @@
 (function (angular) {
     'use strict';
     angular.module('gifSearchApp', [
-        'ngRoute'
+        'ngRoute',
+        'ui.bootstrap'
     ]).config(config);
     function config($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -17,6 +18,7 @@
         });
     }
 })(angular);
+// 
 /// <reference path="../../typings/angularjs/angular.d.ts" />
 'use strict';
 var Capitalize = (function () {
@@ -64,11 +66,29 @@ var GiphyAPISearchService = (function () {
 })();
 angular.module('gifSearchApp').service('GiphyAPISearchService', GiphyAPISearchService);
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
+'use strict';
+var GifModalController = (function () {
+    function GifModalController($uibModalInstance, passedGifData) {
+        this.$uibModalInstance = $uibModalInstance;
+        this.passedGifData = passedGifData;
+        console.log('Gif Modal Controller init !!');
+    }
+    GifModalController.prototype.cancel = function () {
+        this.$uibModalInstance.dismiss();
+    };
+    GifModalController.$inject = ['$uibModalInstance', 'passedGifData'];
+    return GifModalController;
+})();
+angular.module('gifSearchApp').controller('GifModalController', GifModalController);
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 ///<reference path="../../services/giphyAPISearchService.ts" />
 'use strict';
 var SearchController = (function () {
-    function SearchController(GiphyAPISearchService) {
+    function SearchController(GiphyAPISearchService, $uibModal) {
         this.GiphyAPISearchService = GiphyAPISearchService;
+        this.$uibModal = $uibModal;
         console.log('Search Controller init !!');
     }
     SearchController.prototype.searchFor = function (searchPhrase) {
@@ -82,7 +102,17 @@ var SearchController = (function () {
             console.log('error fetching ', searchPhrase); //todo: display message on screen 
         });
     };
-    SearchController.$inject = ['GiphyAPISearchService'];
+    SearchController.prototype.openModal = function (gif) {
+        var modalInstance = this.$uibModal.open({
+            templateUrl: '/app/controllers/gifModal/gifModal.html',
+            controller: 'GifModalController',
+            controllerAs: 'vm',
+            resolve: {
+                passedGifData: gif
+            }
+        });
+    };
+    SearchController.$inject = ['GiphyAPISearchService', '$uibModal'];
     return SearchController;
 })();
 angular.module('gifSearchApp').controller('SearchController', SearchController);

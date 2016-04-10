@@ -1,3 +1,5 @@
+@import '../mixins';
+
 .search-page{
     // border: 1px solid black;
     // background: #ededed;
@@ -5,5 +7,16 @@
     .btns-container{
         margin: 20px auto;
         //button { float: left; margin-right: 10px; }
+    }
+    
+    .results{
+        
+        li{
+            background: darken($lavender, 20%);
+            padding: 20px;
+            margin: 20px auto;
+        }
+        
+        
     }
 }

@@ -10,11 +10,19 @@
     <div class="results" ng-show="vm.searchResult">
         <h3>Search Results for {{vm.searchPhrase | capitalize }}</h3>
         
+        <div>
+            <!--<p>sample data</p>
+            {{vm.searchResult.data[0] | json}}-->
+        </div>
+        
         <ul>
             <li ng-repeat="gif in vm.searchResult.data">
-                <img src="{{gif.images.downsized}}" alt="{{gif.slug}}">
-                <p>show this one in modal</p>
-                <img src="{{gif.url}}" alt="{{gif.slug}}">
+                <span ng-click="vm.openModal(gif)">
+                    <img src="{{gif.images.fixed_width_still.url}}" alt="{{gif.slug}}">
+                </span>
+                <!--<p>show this one in modal</p>
+                <img src="{{gif.images.fixed_height.url}}" alt="{{gif.slug}}">
+                <img src="{{gif.images.downsized.url}}" alt="{{gif.slug}}">-->
             </li>
         </ul>
         
