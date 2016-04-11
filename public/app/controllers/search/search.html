@@ -13,13 +13,16 @@
         <div class="pagination">
             <p>Pagination</p>
             {{vm.searchResult.pagination}}
-            {{vm.numberOfPages}}
+            <p>curr page {{vm.currentPage}}</p>
+            <p>num of pages {{vm.numberOfPages}}</p>
+            
+            <a ng-click="vm.loadPage('prev')">Prev</a>
             <ul class="pagination-btns clearfix">
                 <li ng-repeat="page in vm.pages track by $index">
                     <a ng-class="{active: vm.currentPage === page}" ng-click="vm.loadPage(page)">{{page + 1}}</a>
                 </li>
             </ul>
-            
+            <a ng-click="vm.loadPage('next')">Next</a>
         </div>
         
         <ul class="items clearfix">

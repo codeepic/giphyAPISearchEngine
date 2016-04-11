@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 ///<reference path="../../services/giphyAPISearchService.ts" />
-
+/// <reference path="../../util.ts" />
 'use strict';
 
 class SearchController {
@@ -46,24 +46,36 @@ class SearchController {
     }
     
     private createPagination(page: number = 0): void {
+        this.currentPage = page;
         this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.GiphyAPISearchService.pageSize);
         this.pages = [];
         
-        for(let i = 0; i < this.numberOfPages; i++){
-            this.pages.push(i);
+        //first 3 pages
+        for(let i = 0; i < 3; i++){
+            this.pages.push(i)
         }
         
-        this.currentPage = page;
+        //middle 3 pages
+        if(this.currentPage > 2 && this.currentPage < this.numberOfPages - 3){
+            for(let i = this.currentPage - 1; i < this.currentPage+2; i++){
+                this.pages.pushUnique(i)
+            }    
+        } 
+        
+        //last 3 pages
+        for(let i = this.numberOfPages-3; i < this.numberOfPages; i++){
+            this.pages.push(i)
+        } 
     }
     
-    private loadPage(page: number): void {
-        console.log('laod page: ', page);
+    private loadPage(page: any): void {
+        if(page === 'prev') { page = this.currentPage - 1; }
+        if(page === 'next') { page = this.currentPage + 1; }
+        
         this.GiphyAPISearchService.LoadPage(page)
             .then((result) => {
                 this.searchResult = result;
-                
                 this.createPagination(page);
-                
             }, (e) => {
                 console.log('error fetching next page' ); //todo: display message on screen 
             });

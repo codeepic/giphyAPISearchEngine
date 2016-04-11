@@ -18,7 +18,17 @@
         });
     }
 })(angular);
-// 
+Array.prototype.pushUnique = function (item) {
+    var isNotIn = true;
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] === item) {
+            isNotIn = false;
+        }
+    }
+    if (isNotIn) {
+        this.push(item);
+    }
+};
 /// <reference path="../../typings/angularjs/angular.d.ts" />
 'use strict';
 var Capitalize = (function () {
@@ -101,6 +111,7 @@ angular.module('gifSearchApp').controller('GifModalController', GifModalControll
 /// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 ///<reference path="../../services/giphyAPISearchService.ts" />
+/// <reference path="../../util.ts" />
 'use strict';
 var SearchController = (function () {
     function SearchController(GiphyAPISearchService, $uibModal) {
@@ -132,16 +143,32 @@ var SearchController = (function () {
     };
     SearchController.prototype.createPagination = function (page) {
         if (page === void 0) { page = 0; }
+        this.currentPage = page;
         this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.GiphyAPISearchService.pageSize);
         this.pages = [];
-        for (var i = 0; i < this.numberOfPages; i++) {
+        //first 3 pages
+        for (var i = 0; i < 3; i++) {
             this.pages.push(i);
         }
-        this.currentPage = page;
+        //middle 3 pages
+        if (this.currentPage > 2 && this.currentPage < this.numberOfPages - 3) {
+            for (var i = this.currentPage - 1; i < this.currentPage + 2; i++) {
+                this.pages.pushUnique(i);
+            }
+        }
+        //last 3 pages
+        for (var i = this.numberOfPages - 3; i < this.numberOfPages; i++) {
+            this.pages.push(i);
+        }
     };
     SearchController.prototype.loadPage = function (page) {
         var _this = this;
-        console.log('laod page: ', page);
+        if (page === 'prev') {
+            page = this.currentPage - 1;
+        }
+        if (page === 'next') {
+            page = this.currentPage + 1;
+        }
         this.GiphyAPISearchService.LoadPage(page)
             .then(function (result) {
             _this.searchResult = result;
