@@ -13,9 +13,17 @@
         <div class="pagination">
             <p>Pagination</p>
             {{vm.searchResult.pagination}}
+            {{vm.numberOfPages}}
+            <ul class="pagination-btns clearfix">
+                <li ng-repeat="page in vm.pages track by $index">
+                    <a ng-click="vm.loadPage(page)">{{page}}</a>
+                </li>
+            </ul>
+            
+            
         </div>
         
-        <ul class="clearfix">
+        <ul class="items clearfix">
             <li ng-repeat="gif in vm.searchResult.data">
                 <div>
                     <img ng-click="vm.openModal(gif)" src="{{gif.images.fixed_width_still.url}}" alt="{{gif.slug}}">
