@@ -66,7 +66,7 @@ var GiphyAPISearchService = (function () {
     };
     GiphyAPISearchService.prototype.LoadPage = function (page) {
         var q = this.$q.defer();
-        var offset = (page - 1) * this.pageSize;
+        var offset = page * this.pageSize;
         this.$http({
             method: 'GET',
             url: this.searchUrl + this.phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize + '&offset=' + offset
@@ -129,11 +129,13 @@ var SearchController = (function () {
             }
         });
     };
-    SearchController.prototype.createPagination = function () {
-        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.GiphyAPISearchService.pageSize);
-        for (var i = 1; i <= this.numberOfPages; i++) {
+    SearchController.prototype.createPagination = function (page) {
+        if (page === void 0) { page = 0; }
+        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.searchResult.pagination.count);
+        for (var i = 0; i < this.numberOfPages; i++) {
             this.pages.push(i);
         }
+        this.currentPage = page;
     };
     SearchController.prototype.loadPage = function (page) {
         var _this = this;
@@ -141,7 +143,7 @@ var SearchController = (function () {
         this.GiphyAPISearchService.LoadPage(page)
             .then(function (result) {
             _this.searchResult = result;
-            _this.createPagination();
+            _this.createPagination(page);
         }, function (e) {
             console.log('error fetching next page'); //todo: display message on screen 
         });

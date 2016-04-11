@@ -16,10 +16,9 @@
             {{vm.numberOfPages}}
             <ul class="pagination-btns clearfix">
                 <li ng-repeat="page in vm.pages track by $index">
-                    <a ng-click="vm.loadPage(page)">{{page}}</a>
+                    <a ng-class="{active: vm.currentPage === page}" ng-click="vm.loadPage(page)">{{page + 1}}</a>
                 </li>
             </ul>
-            
             
         </div>
         

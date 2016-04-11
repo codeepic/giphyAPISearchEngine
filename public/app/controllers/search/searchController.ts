@@ -11,6 +11,7 @@ class SearchController {
     private searchPhrase: string;
     private searchResult: any;
     private numberOfPages: number;
+    private currentPage: number;
     private pages: number[] = [];
     
     constructor(
@@ -44,12 +45,14 @@ class SearchController {
             });
     }
     
-    private createPagination(): void {
-        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.GiphyAPISearchService.pageSize);
+    private createPagination(page: number = 0): void {
+        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.searchResult.pagination.count);
         
-        for(let i = 1; i <= this.numberOfPages; i++){
+        for(let i = 0; i < this.numberOfPages; i++){
             this.pages.push(i);
         }
+        
+        this.currentPage = page;
     }
     
     private loadPage(page: number): void {
@@ -58,7 +61,7 @@ class SearchController {
             .then((result) => {
                 this.searchResult = result;
                 
-                this.createPagination();
+                this.createPagination(page);
                 
             }, (e) => {
                 console.log('error fetching next page' ); //todo: display message on screen 

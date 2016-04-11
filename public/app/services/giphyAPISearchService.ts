@@ -37,7 +37,7 @@ class GiphyAPISearchService {
     public LoadPage(page: number): ng.IPromise<{}> {
         let q = this.$q.defer();
         
-        let offset = (page - 1)  * this.pageSize;
+        let offset = page  * this.pageSize;
         
         this.$http({
             method: 'GET',
