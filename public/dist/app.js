@@ -114,6 +114,7 @@ var SearchController = (function () {
         this.GiphyAPISearchService.Search(searchPhrase)
             .then(function (result) {
             _this.searchResult = result;
+            console.log('result: ', result);
             _this.createPagination();
         }, function (e) {
             console.log('error fetching ', searchPhrase); //todo: display message on screen 
@@ -131,7 +132,8 @@ var SearchController = (function () {
     };
     SearchController.prototype.createPagination = function (page) {
         if (page === void 0) { page = 0; }
-        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.searchResult.pagination.count);
+        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.GiphyAPISearchService.pageSize);
+        this.pages = [];
         for (var i = 0; i < this.numberOfPages; i++) {
             this.pages.push(i);
         }

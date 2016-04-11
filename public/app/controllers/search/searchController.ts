@@ -25,7 +25,7 @@ class SearchController {
         this.GiphyAPISearchService.Search(searchPhrase)
             .then((result) => {
                 this.searchResult = result;
-                
+                console.log('result: ', result);
                 this.createPagination();
                 
             }, (e) => {
@@ -46,7 +46,8 @@ class SearchController {
     }
     
     private createPagination(page: number = 0): void {
-        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.searchResult.pagination.count);
+        this.numberOfPages = Math.ceil(this.searchResult.pagination.total_count / this.GiphyAPISearchService.pageSize);
+        this.pages = [];
         
         for(let i = 0; i < this.numberOfPages; i++){
             this.pages.push(i);
