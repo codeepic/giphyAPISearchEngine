@@ -10,26 +10,21 @@
     <div class="results" ng-show="vm.searchResult">
         <h3>Search Results for {{vm.searchPhrase | capitalize }}</h3>
         
-        <div>
-            <!--<p>sample data</p>
-            {{vm.searchResult.data[0] | json}}-->
+        <div class="pagination">
+            <p>Pagination</p>
+            {{vm.searchResult.pagination}}
         </div>
         
-        <ul>
+        <ul class="clearfix">
             <li ng-repeat="gif in vm.searchResult.data">
-                <span ng-click="vm.openModal(gif)">
-                    <img src="{{gif.images.fixed_width_still.url}}" alt="{{gif.slug}}">
-                </span>
+                <div>
+                    <img ng-click="vm.openModal(gif)" src="{{gif.images.fixed_width_still.url}}" alt="{{gif.slug}}">
+                </div>
                 <!--<p>show this one in modal</p>
                 <img src="{{gif.images.fixed_height.url}}" alt="{{gif.slug}}">
                 <img src="{{gif.images.downsized.url}}" alt="{{gif.slug}}">-->
             </li>
         </ul>
-        
-        <div class="pagination">
-            <p>Pagination</p>
-            {{vm.searchResult.pagination}}
-        </div>
     </div>
     
 </section>

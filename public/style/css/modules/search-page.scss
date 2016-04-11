@@ -1,22 +1,41 @@
 @import '../mixins';
 
 .search-page{
-    // border: 1px solid black;
-    // background: #ededed;
     
     .btns-container{
         margin: 20px auto;
-        //button { float: left; margin-right: 10px; }
     }
     
     .results{
         
         li{
-            background: darken($lavender, 20%);
+            background: darken($lavender, 5%);
             padding: 20px;
-            margin: 20px auto;
+            margin: 2% auto 0;
+            float: left;
+            width: 23%;
+            margin-right: 2%;
+            height: 260px;
+            display: table;
+            
+            div{
+                display:table-cell;
+                vertical-align:middle;
+            }
+            
+            img{
+                display: block;
+                margin: 0 auto;
+                cursor: pointer;
+            }
         }
-        
-        
     }
 }
+/*
+<div style="display:table;">
+  <div style="display:table-cell;vertical-align:middle;">
+    <div style="margin-left:auto;margin-right:auto;"></div>
+  </div>
+</div>
+
+*/

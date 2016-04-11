@@ -89,7 +89,6 @@ var SearchController = (function () {
     function SearchController(GiphyAPISearchService, $uibModal) {
         this.GiphyAPISearchService = GiphyAPISearchService;
         this.$uibModal = $uibModal;
-        console.log('Search Controller init !!');
     }
     SearchController.prototype.searchFor = function (searchPhrase) {
         var _this = this;
