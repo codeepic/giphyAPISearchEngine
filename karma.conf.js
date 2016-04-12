@@ -20,7 +20,8 @@ module.exports = function(config) {
       'public/lib/angular.min.js',
       'public/lib/angular-route.min.js',
       'public/lib/angular-animate.min.js',
-      'lib/ui-bootstrap-tpls-1.3.1.min.js',
+      'public/lib/angular-mocks.js',
+      'public/lib/ui-bootstrap-tpls-1.3.1.min.js',
       'public/dist/app.js',
       'public/test/*.js'
     ],

@@ -6,15 +6,12 @@ class GiphyAPISearchService {
     
     static $inject = ['$q', '$http'];
     
-    //public numberOfPages: number;
     private searchUrl: string = 'http://api.giphy.com/v1/gifs/search?q=';
     private apiKey: string = 'dc6zaTOxFJmzC';
     public phrase: string;
     public pageSize: number = 15;
     
     constructor(private $q: ng.IQService, private $http: ng.IHttpService){}
-    
-    //http://api.giphy.com/v1/gifs/search?q=puppies&api_key=dc6zaTOxFJmzC   
     
     public Search(phrase: string): ng.IPromise<{}> {
         let q = this.$q.defer();
@@ -25,7 +22,6 @@ class GiphyAPISearchService {
             method: 'GET',
             url: this.searchUrl + phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize 
         }).success((result) =>{
-            //this.CreatePagination(result);
             q.resolve(result);
         }).error((e) =>{
             q.reject(e);
@@ -43,7 +39,6 @@ class GiphyAPISearchService {
             method: 'GET',
             url: this.searchUrl + this.phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize + '&offset=' + offset
         }).success((result) =>{
-            //this.CreatePagination(result);
             q.resolve(result);
         }).error((e) =>{
             q.reject(e);
@@ -51,10 +46,6 @@ class GiphyAPISearchService {
         
         return q.promise;
     }
-    
-    // private CreatePagination(result){
-    //     this.numberOfPages = Math.ceil(result.pagination.total_count / this.pageSize);
-    // }
 }
 
 angular.module('gifSearchApp').service('GiphyAPISearchService', GiphyAPISearchService)
