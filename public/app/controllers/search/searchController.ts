@@ -52,19 +52,19 @@ class SearchController {
         
         //first 3 pages
         for(let i = 0; i < 3; i++){
-            this.pages.push(i)
+            this.pages.push(i);
         }
         
         //middle 3 pages
         if(this.currentPage > 2 && this.currentPage < this.numberOfPages - 3){
             for(let i = this.currentPage - 1; i < this.currentPage+2; i++){
-                this.pages.pushUnique(i)
+                this.pages.pushUnique(i);
             }    
         } 
         
         //last 3 pages
         for(let i = this.numberOfPages-3; i < this.numberOfPages; i++){
-            this.pages.push(i)
+            this.pages.pushUnique(i);
         } 
     }
     

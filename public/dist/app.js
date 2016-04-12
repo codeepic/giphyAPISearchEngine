@@ -158,7 +158,7 @@ var SearchController = (function () {
         }
         //last 3 pages
         for (var i = this.numberOfPages - 3; i < this.numberOfPages; i++) {
-            this.pages.push(i);
+            this.pages.pushUnique(i);
         }
     };
     SearchController.prototype.loadPage = function (page) {

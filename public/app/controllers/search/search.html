@@ -10,19 +10,26 @@
     <div class="results" ng-show="vm.searchResult">
         <h3>Search Results for {{vm.searchPhrase | capitalize }}</h3>
         
-        <div class="pagination">
+        <!--<div>
+            <p>=============</p>
             <p>Pagination</p>
             {{vm.searchResult.pagination}}
             <p>curr page {{vm.currentPage}}</p>
             <p>num of pages {{vm.numberOfPages}}</p>
+            <p>=============</p>
+        </div>-->
+        
+        <div class="pagination clearfix">
             
-            <a ng-click="vm.loadPage('prev')">Prev</a>
-            <ul class="pagination-btns clearfix">
+            <button ng-disabled="vm.currentPage <= 0"  ng-click="vm.loadPage('prev')">Prev</button>
+            
+            <ul class="clearfix">
                 <li ng-repeat="page in vm.pages track by $index">
-                    <a ng-class="{active: vm.currentPage === page}" ng-click="vm.loadPage(page)">{{page + 1}}</a>
+                    <button ng-class="{active: vm.currentPage === page}" ng-click="vm.loadPage(page)">{{page + 1}}</button>
                 </li>
             </ul>
-            <a ng-click="vm.loadPage('next')">Next</a>
+            
+            <button ng-disabled="vm.currentPage >= vm.numberOfPages - 1" ng-click="vm.loadPage('next')">Next</button>
         </div>
         
         <ul class="items clearfix">
@@ -30,9 +37,6 @@
                 <div>
                     <img ng-click="vm.openModal(gif)" src="{{gif.images.fixed_width_still.url}}" alt="{{gif.slug}}">
                 </div>
-                <!--<p>show this one in modal</p>
-                <img src="{{gif.images.fixed_height.url}}" alt="{{gif.slug}}">
-                <img src="{{gif.images.downsized.url}}" alt="{{gif.slug}}">-->
             </li>
         </ul>
     </div>

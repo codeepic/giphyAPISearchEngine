@@ -8,27 +8,6 @@
     
     .results{
         
-        ul.pagination-btns li{
-            float: left;
-            margin-right: 10px;
-            
-            a{
-                cursor: pointer;
-                display: inline-block;
-                width: 100%;
-                height: 100%;
-                padding: 5px 8px;
-                background: lighten($marguerite, 20%);
-                
-                &:hover, &.active{
-                    background: lighten($marguerite, 10%);
-                    text-decoration: none;
-                    color: #fff;
-                }
-            }
-            
-        }
-        
         ul.items li{
             background: darken($lavender, 5%);
             padding: 20px;
