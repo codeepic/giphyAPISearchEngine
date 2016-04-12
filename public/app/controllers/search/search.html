@@ -10,15 +10,6 @@
     <div class="results" ng-show="vm.searchResult">
         <h3>Search Results for {{vm.searchPhrase | capitalize }}</h3>
         
-        <!--<div>
-            <p>=============</p>
-            <p>Pagination</p>
-            {{vm.searchResult.pagination}}
-            <p>curr page {{vm.currentPage}}</p>
-            <p>num of pages {{vm.numberOfPages}}</p>
-            <p>=============</p>
-        </div>-->
-        
         <div class="pagination clearfix">
             
             <button ng-disabled="vm.currentPage <= 0"  ng-click="vm.loadPage('prev')">Prev</button>

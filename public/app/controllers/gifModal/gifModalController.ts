@@ -12,9 +12,7 @@ class GifModalController {
     constructor(
         private $uibModalInstance: ng.ui.bootstrap.IModalServiceInstance,
         private passedGifData: any
-    ){
-        console.log('Gif Modal Controller init !!');
-    }
+    ){}
     
     private cancel(): void {
         this.$uibModalInstance.dismiss();

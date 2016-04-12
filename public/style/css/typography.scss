@@ -1,8 +1,8 @@
 @import 'mixins';
 
 body, p, button, textarea, input, select, label{ font-size: 16px; }
-h1, h2, h3, h4, h5, h6, p, span, label, li, th, td{ color: $prussianBlue; }          //todo: change
-textarea, input, select { color:$prussianBlue; }                                    //todo: change
+h1, h2, h3, h4, h5, h6, p, span, label, li, th, td{ color: $prussianBlue; }
+textarea, input, select { color:$prussianBlue; }
 a{ text-decoration: none; color: #fff; }
 
 body, h1, h2, h3, h4, h5, h6, p, li, a, input, textarea, select, button{

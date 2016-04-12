@@ -25,7 +25,6 @@ class SearchController {
         this.GiphyAPISearchService.Search(searchPhrase)
             .then((result) => {
                 this.searchResult = result;
-                console.log('result: ', result);
                 this.createPagination();
                 
             }, (e) => {

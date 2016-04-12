@@ -54,12 +54,10 @@ var GiphyAPISearchService = (function () {
     function GiphyAPISearchService($q, $http) {
         this.$q = $q;
         this.$http = $http;
-        //public numberOfPages: number;
         this.searchUrl = 'http://api.giphy.com/v1/gifs/search?q=';
         this.apiKey = 'dc6zaTOxFJmzC';
         this.pageSize = 15;
     }
-    //http://api.giphy.com/v1/gifs/search?q=puppies&api_key=dc6zaTOxFJmzC   
     GiphyAPISearchService.prototype.Search = function (phrase) {
         var q = this.$q.defer();
         this.phrase = phrase;
@@ -67,7 +65,6 @@ var GiphyAPISearchService = (function () {
             method: 'GET',
             url: this.searchUrl + phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize
         }).success(function (result) {
-            //this.CreatePagination(result);
             q.resolve(result);
         }).error(function (e) {
             q.reject(e);
@@ -81,7 +78,6 @@ var GiphyAPISearchService = (function () {
             method: 'GET',
             url: this.searchUrl + this.phrase + '&api_key=' + this.apiKey + '&limit=' + this.pageSize + '&offset=' + offset
         }).success(function (result) {
-            //this.CreatePagination(result);
             q.resolve(result);
         }).error(function (e) {
             q.reject(e);
@@ -99,7 +95,6 @@ var GifModalController = (function () {
     function GifModalController($uibModalInstance, passedGifData) {
         this.$uibModalInstance = $uibModalInstance;
         this.passedGifData = passedGifData;
-        console.log('Gif Modal Controller init !!');
     }
     GifModalController.prototype.cancel = function () {
         this.$uibModalInstance.dismiss();
@@ -125,7 +120,6 @@ var SearchController = (function () {
         this.GiphyAPISearchService.Search(searchPhrase)
             .then(function (result) {
             _this.searchResult = result;
-            console.log('result: ', result);
             _this.createPagination();
         }, function (e) {
             console.log('error fetching ', searchPhrase); //todo: display message on screen 

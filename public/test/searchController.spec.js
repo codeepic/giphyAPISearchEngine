@@ -1,5 +1,3 @@
-console.log("controller spec below");
-
 describe("Search Controller", function(){
 
     var scope,
