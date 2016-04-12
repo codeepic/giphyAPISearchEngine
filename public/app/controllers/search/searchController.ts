@@ -17,7 +17,7 @@ class SearchController {
     constructor(
         private GiphyAPISearchService: GiphyAPISearchService,
         private $uibModal: ng.ui.bootstrap.IModalService
-        ){}
+    ){}
 
     private searchFor(searchPhrase: string): void{
         this.searchPhrase = searchPhrase;
